@@ -1,0 +1,6 @@
+cat /proc/sys/net/ipv4/conf/eth1/force_igmp_version
+
+smcroute -d
+smcroute -k
+smcroute -l 224.5.6.7 eth1
+smcroute -j 224.5.6.7 eth1
