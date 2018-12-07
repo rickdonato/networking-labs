@@ -70,6 +70,7 @@ router bgp 1
     remote-as 1
     update-source loopback0
     address-family ipv4 unicast
+      send-community extended
       soft-reconfiguration inbound
     address-family l2vpn evpn
       send-community
