@@ -1,7 +1,6 @@
-# General
-* Tutorial located at :
+Tutorial located at :
 
-# Notes
+**Notes**
 * OSPF
 * PIM-SM - Anycast RP
 * EVPN
