@@ -1,2 +1,2 @@
-# virl-labs
-Collection of Cisco VIRL configs, and lab topology files.
+# Network Labs
+Collection of configs, and files for various networking labs.
