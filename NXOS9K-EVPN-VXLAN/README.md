@@ -1,5 +1,6 @@
-# Tutotrial
-xyz
+# General
+* Tutorial located at :
+
 # Notes
 * OSPF
 * PIM-SM - Anycast RP
