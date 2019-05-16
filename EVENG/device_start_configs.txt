@@ -14,3 +14,6 @@ interface Management1
    ip address 172.29.133.1/24
 !
 ip route 0.0.0.0/0 172.29.133.254
+
+# ref
+https://www.eve-ng.net/documentation/howto-s/121-howto-add-images-from-virl
