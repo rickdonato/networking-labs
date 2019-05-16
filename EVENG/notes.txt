@@ -1,0 +1,2 @@
+# copy and paste
+ctrl-shift-alt + add text to clipboard
