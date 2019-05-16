@@ -1,5 +1,5 @@
 # nxos
-boot nxos bootflash:/nxos.7.0.3.I7.1.bin
+boot nxos bootflash:nxos.7.0.3.I7.1.bin
 !
 interface mgmt0
   vrf member management
