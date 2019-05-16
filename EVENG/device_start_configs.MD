@@ -13,6 +13,8 @@ vrf context management
 ```
 # veos
 
+username bob privilege 15 secret abc123
+
 interface Management1
    ip address 172.29.133.1/24
 !
