@@ -2,7 +2,7 @@ hostname vios
 !
 ip domain-name packetflow.local
 !
-crypto key generate rsa # 2048
+crypto key generate rsa general-keys modulus 2048 
 ip ssh version 2
 !
 line vty 0 4
