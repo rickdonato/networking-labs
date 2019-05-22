@@ -1,1 +1,40 @@
+hostname access1
+!
+vrf definition Mgmt-intf
+!
+enable password cisco
+!
+username cisco privilege 15 secret 5 cisco
+!
+no ip domain-lookup
+ip domain-name packetflow.local
+ip cef
+no ipv6 cef
+!
 
+interface GigabitEthernet0/0
+ description OOB management
+ no switchport
+ vrf forwarding Mgmt-intf
+ ip address x.x.x.x x.x.x.x
+ negotiation auto
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip route vrf Mgmt-intf 0.0.0.0 0.0.0.0 172.29.132.254
+!
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login local
+ transport input telnet ssh
+!
+!
+end
