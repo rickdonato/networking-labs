@@ -9,7 +9,7 @@ line vty 0 4
   transport input ssh
   login local
 !
-username bob privilege 15 secret abc123
+username cisco privilege 15 secret cisco
 !
 interface GigabitEthernet0/0
  ip address 172.29.133.2 255.255.255.0
