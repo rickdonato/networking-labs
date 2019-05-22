@@ -4,12 +4,15 @@ vrf definition Mgmt-intf
 !
 enable password cisco
 !
-username cisco privilege 15 secret 5 cisco
+username cisco privilege 15 password cisco
 !
+
 no ip domain-lookup
 ip domain-name packetflow.local
 ip cef
 no ipv6 cef
+!
+crypto key generate rsa general-keys modulus 2048 
 !
 
 interface GigabitEthernet0/0
