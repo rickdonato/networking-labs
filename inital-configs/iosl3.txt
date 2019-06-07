@@ -1,9 +1,9 @@
-hostname vios
-!
 version 15.6
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
+!
+hostname r2
 !
 boot-start-marker
 boot-end-marker
@@ -11,24 +11,96 @@ boot-end-marker
 no aaa new-model
 ethernet lmi ce
 !
+!
 mmi polling-interval 60
 no mmi auto-configure
 no mmi pvc
 mmi snmp-timeout 180
+ip domain name packetflow.local
+ip cef
+no ipv6 cef
 !
-ip domain-name packetflow.local
+multilink bundle-name authenticated
 !
+!
+username cisco privilege 15 secret 5 $1$n6MH$d7g6825/NnuPR8pzf74oH0
+!         
+redundancy
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+ !
+ interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!         
+!
+no ip http server
+no ip http secure-server
+
 crypto key generate rsa general-keys modulus 2048 
 ip ssh version 2
 !
+!
+control-plane
+!
+banner exec ^CC
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner incoming ^CC
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^CC
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+!
+line con 0
+line aux 0
 line vty 0 4
-  transport input ssh
-  login local
+ login
+ transport input none
 !
-username cisco privilege 15 secret cisco
+no scheduler allocate
 !
-interface GigabitEthernet0/0
- ip address 172.29.133.2 255.255.255.0
- no shut
-!
-ip route 0.0.0.0 0.0.0.0 172.29.133.254
+end
