@@ -1,5 +1,21 @@
 hostname vios
 !
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+boot-start-marker
+boot-end-marker
+!
+no aaa new-model
+ethernet lmi ce
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
 ip domain-name packetflow.local
 !
 crypto key generate rsa general-keys modulus 2048 
