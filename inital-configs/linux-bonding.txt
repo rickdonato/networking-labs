@@ -1,0 +1,19 @@
+# based on VIRL setup.
+- path: /etc/rc.local
+  owner: root:root
+  permissions: '0755'
+  content: |-
+    #!/bin/sh
+    route add -net 192.168.0.0 netmask 255.255.0.0 gw 10.10.1.254 dev bond0
+    route add -net 10.0.0.0 netmask 255.0.0.0 gw 10.10.1.254 dev bond0
+    modprobe bonding
+    ifconfig eth1 0.0.0.0
+    ifconfig eth2 0.0.0.0
+    ifconfig eth1 down
+    ifconfig eth2 down
+    ifconfig bond0 up
+    ifenslave bond0 eth1 eth2
+    ifconfig bond0 10.10.1.1 netmask 255.255.255.0
+    ifconfig eth1 up
+    ifconfig eth2 up
+    exit 0
