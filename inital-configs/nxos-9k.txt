@@ -4,7 +4,7 @@ feature ospf
 !
 boot nxos bootflash:nxos.7.0.3.I7.1.bin
 !
-username rick role priv-15 password snci2000
+username cisco role priv-15 password cisco123
 !
 interface mgmt0
   vrf member management
