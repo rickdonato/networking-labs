@@ -1,51 +1,128 @@
+version 15.2
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
 service compress-config
 !
+hostname cisco-sw
+!
 boot-start-marker
 boot-end-marker
 !
-no aaa new-model
-!
-ip cef
-no ipv6 cef
-!
-spanning-tree mode pvst
-spanning-tree extend system-id
-!
-vlan internal allocation policy ascending
-!
-ip forward-protocol nd
-!
-no ip http server
-no ip http secure-server
-!
-control-plane
-!
-hostname access1
 !
 vrf definition Mgmt-intf
 !
 enable password cisco
 !
-username cisco privilege 15 password cisco
+username cisco privilege 15 password 0 cisco
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
 !
 no ip domain-lookup
 ip domain-name packetflow.local
 ip cef
 no ipv6 cef
 !
-crypto key generate rsa general-keys modulus 2048 
 !
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description OOB management
+ no switchport
+ ip address 172.29.133.3 255.255.255.0
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ media-type rj45
+ negotiation auto
 !
 ip forward-protocol nd
 !
 no ip http server
 no ip http secure-server
 !
-
+ip route 0.0.0.0 0.0.0.0 172.29.133.254
 !
+!
+!
+!
+!
+control-plane
+!
+banner exec ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner incoming ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
 !
 line con 0
  password cisco
@@ -56,13 +133,6 @@ line vty 0 4
  login local
  transport input telnet ssh
 !
+crypto key generate rsa general-keys modulus 2048
 !
-ip route vrf Mgmt-intf 0.0.0.0 0.0.0.0 172.29.132.254
-!
-interface GigabitEthernet0/0
- description OOB management
- no switchport
- vrf forwarding Mgmt-intf
- ip address x.x.x.x x.x.x.x
- negotiation auto
-
+end
