@@ -1,3 +1,3 @@
 ## Creds
 * Cisco - `cisco/cisco`
-* Juniper - `root/Juniper`
+* Juniper - `root/Juniper` / `admin/Juniper`
