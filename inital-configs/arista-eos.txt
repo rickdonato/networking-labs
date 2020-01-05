@@ -1,6 +1,33 @@
-username bob privilege 15 secret abc123
+terminal length 0
+Pagination disabled.
+veos#more system:running-config
+quit
+! device: veos (vEOS, EOS-4.15.10M)
+!
+! boot system flash:/vEOS-lab.swi
+!
+transceiver qsfp default-mode 4x10G
+!
+hostname veos
+!
+spanning-tree mode mstp
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret 5 $1$4GbgKaaq$lclDp2HZsKOk.3hZ6GyG70
+!
+interface Ethernet1
+!
+interface Ethernet2
+!
+interface Ethernet3
 !
 interface Management1
-   ip address 172.29.133.1/24
+   ip address 172.29.133.4/24
 !
 ip route 0.0.0.0/0 172.29.133.254
+!
+no ip routing
+!
+!
+end
