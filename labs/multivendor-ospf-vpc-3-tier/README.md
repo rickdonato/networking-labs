@@ -8,7 +8,7 @@ Multi vendor lab based on a 3 tier topology.
 * LACP downlinks from aggregation to each access switch.
 
 ## Topology
-![multivendor-3tier-topology](https://github.com/rickdonato/networking-labs/blob/master/eveng/multi-vendor-3-tier-lab/multivendor-3tier-topology.png)
+![multivendor-3tier-topology](https://github.com/rickdonato/networking-labs/blob/master/labs/multivendor-ospf-vpc-3-tier/multivendor-3tier-topology.png)
 
 ## Credentials
 * Core - `cisco/cisco`
