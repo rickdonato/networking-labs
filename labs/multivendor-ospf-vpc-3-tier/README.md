@@ -1,8 +1,10 @@
 # Multi Vendor 3 Tier Lab
 Multi vendor lab based on a 3 tier topology.
+
+## Key Points
 * Vendors are Cisco, Juniper and Arista.
-* Core is based on OSPF.
-* Aggregation uses vPC.
+* Core is configured with OSPF.
+* Aggregation NXOS's uses vPC.
 * LACP downlinks from aggregation to each access switch.
 
 ## Topology
