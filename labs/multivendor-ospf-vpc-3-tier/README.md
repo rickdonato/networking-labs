@@ -8,14 +8,15 @@ Multi vendor lab based on a 3 tier topology.
 * LACP downlinks from aggregation to each access switch.
 
 ## Caveats
+### vPC Peer Link
 When the aggrs come up the vPC peer link will be down. To resolve run the following on both aggrs, and check via `show int status`.
-
 ```
 nxos-aggrx(config)# int e1/10,e1/11
 nxos-aggrx(config-if-range)# shut
 nxos-aggrx(config-if-range)# no shut
 ```
-
+### IOS Crypto
+On boot you need to create a rsa key with a 4096 modulus.
 
 ## Topology
 ![multivendor-3tier-topology](https://github.com/rickdonato/networking-labs/blob/master/labs/multivendor-ospf-vpc-3-tier/multivendor-3tier-topology.png)
